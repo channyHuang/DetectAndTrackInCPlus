@@ -54,11 +54,9 @@ void DetectAndTrack::threadLoop(std::future<void> exitListener) {
         if (mCvFrame.empty()) {
             break;
         }
-        // Inference starts here...
+        // Detect
         std::vector<Detection> output = m_pInf->runInference(mCvFrame);
-
         int detections = output.size();
-        // std::cout << "Number of detections:" << detections << std::endl;
 
         for (int i = 0; i < detections; ++i)
         {
@@ -80,12 +78,10 @@ void DetectAndTrack::threadLoop(std::future<void> exitListener) {
         }
         // Inference ends here...
 
-        // This is only for preview purposes
+        // show
         float scale = 0.8;
         cv::resize(mCvFrame, mCvFrame, cv::Size(mCvFrame.cols*scale, mCvFrame.rows*scale));
         cv::imshow("Inference", mCvFrame);
-
         cv::waitKey(1);
-        // do something here
     } while (exitListener.wait_for(std::chrono::microseconds(1)) == std::future_status::timeout);
 }
