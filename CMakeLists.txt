@@ -49,7 +49,10 @@ file(GLOB TrackFiles ./Track/*)
 
 set(PROJECT_SOURCES
     main.cpp
+    detectAndTrack.h
+    detectAndTrack.cpp
     json.hpp
+    
     ${DetectFiles}
     ${TrackFiles}
 )
