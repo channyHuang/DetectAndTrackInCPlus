@@ -29,7 +29,7 @@ bool DetectAndTrack::init(char* pVideoUri) {
     }
 
     if (m_pInf == nullptr) {
-        m_pInf = new Inference("../models/yolov8n_640.onnx", cv::Size(640, 640));
+        m_pInf = new Inference("../models/yolov5nu.onnx", cv::Size(640, 640));
     }
     run();
     return true;
@@ -149,4 +149,5 @@ void DetectAndTrack::threadLoop(std::future<void> exitListener) {
         cv::imshow("Inference", mCvFrame);
         cv::waitKey(1);
     } while (exitListener.wait_for(std::chrono::microseconds(1)) == std::future_status::timeout);
+    mCvCap.release();
 }

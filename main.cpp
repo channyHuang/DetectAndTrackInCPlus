@@ -19,7 +19,8 @@ public:
     }
 
     void run() {
-        DetectAndTrack::getInstance()->init("./../data/1945.MP4");
+        // DetectAndTrack::getInstance()->init("./../data/pedestrians.mp4");
+        DetectAndTrack::getInstance()->init("/home/channy/Documents/bak_code_and_docs/WJ_Project_new/test_data/videos/dashcam.mp4");
 
         DetectAndTrack::getInstance()->setStatus(1);
         std::this_thread::sleep_for(std::chrono::seconds(5));

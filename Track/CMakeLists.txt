@@ -1,0 +1,20 @@
+FILE(GLOB LIBRARY_FILES_C "*.cpp")
+FILE(GLOB LIBRARY_FILES_H "*.h" "*.inl")
+
+project(Track)
+
+include_directories(${PROJECT_NAME}
+	)
+	
+add_library(${PROJECT_NAME}
+${LIBRARY_FILES_C} 
+${LIBRARY_FILES_H}
+)
+
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} 
+)
+else()
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} 
+)
+endif()

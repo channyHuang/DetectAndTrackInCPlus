@@ -79,7 +79,6 @@ private:
     int m_nFrameBuffer = 30;
     byte_track::BYTETracker m_cTracker;
     float m_fEps = 50;
-    
 };
 
 #endif
